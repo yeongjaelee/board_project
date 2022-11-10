@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from board.models import Post
+
+
+@admin.register(Post)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+

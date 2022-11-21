@@ -9,4 +9,15 @@
             <li>{{ post_detail.context }}</li>
         {% endfor %}
     </ul>
+    <form action="/boards/complete/">
+
+        TITLE : <input type="text" name="title">
+
+        <br>
+
+        CONTENT : <input type="text" name="content">
+
+        <input type="submit" value="submit">
+
+    </form>
 </html>

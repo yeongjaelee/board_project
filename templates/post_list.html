@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>board_project</title>
-    </head>
-    <body>
-        <h1>{{board_title}}</h1>
-    </body>
+    <h1>hello</h1>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.title }}</li>
+        {% endfor %}
+        {% for post_detail in post_details_all %}
+            <li>{{ post_detail.context }}</li>
+        {% endfor %}
+    </ul>
 </html>

@@ -1,9 +1,13 @@
 from django.contrib import admin
 
-from board.models import Post
+from board.models import PostDetail
+from board.models.post import Post
 
 
 @admin.register(Post)
-class CategoryAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     list_display = ('title',)
 
+@admin.register(PostDetail)
+class PostDetail(admin.ModelAdmin):
+    pass

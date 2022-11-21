@@ -1,12 +1,13 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render
 
-from board.models import Post
+from board.models import PostDetail
+from board.models.post import Post
 
 
-def post_list(request):
-    title = {'board_title': 'this is for test'}
-    return render(request, './post_list.html', title)
+def index(request):
+    posts = Post.objects.all()
+    post_details = PostDetail.objects.all()
+    post_all = {"posts": posts, "post_details_all": post_details}
+    return render(request, './post_list.html', post_all)
 

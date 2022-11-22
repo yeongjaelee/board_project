@@ -9,15 +9,21 @@
             <li>{{ post_detail.context }}</li>
         {% endfor %}
     </ul>
-    <form action="/boards/complete/">
+    <form method ="post">
+        {% csrf_token %}
 
-        TITLE : <input type="text" name="title">
+        <!-- writting title -->
+        <div class="form-group">
+            <label for="id_title"> title </label>
+            <input type="text" class="form-control" id="id_title" name="title">
+        </div>
 
-        <br>
+        <div class="form-group">
+            <lable for="id_content">content</lable>
+            <textarea class="form-control" id="id_content" name="content" ></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">submit</button>
 
-        CONTENT : <input type="text" name="content">
 
-        <input type="submit" value="submit">
-
-    </form>
+</form>
 </html>

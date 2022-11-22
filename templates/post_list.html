@@ -4,26 +4,7 @@
     <ul>
         {% for post in posts %}
             <li>{{ post.title }}</li>
-        {% endfor %}
-        {% for post_detail in post_details_all %}
-            <li>{{ post_detail.context }}</li>
+            <a href="{% url 'create' %}" class="btn btn-info"><b>go to post_detail</b></a>
         {% endfor %}
     </ul>
-    <form method ="post">
-        {% csrf_token %}
-
-        <!-- writting title -->
-        <div class="form-group">
-            <label for="id_title"> title </label>
-            <input type="text" class="form-control" id="id_title" name="title">
-        </div>
-
-        <div class="form-group">
-            <lable for="id_content">content</lable>
-            <textarea class="form-control" id="id_content" name="content" ></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">submit</button>
-
-
-</form>
 </html>

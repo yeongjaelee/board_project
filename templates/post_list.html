@@ -3,8 +3,8 @@
     <h1>hello</h1>
     <ul>
         {% for post in posts %}
-            <li>{{ post.title }}</li>
-            <a href="{% url 'create' %}" class="btn btn-info"><b>go to post_detail</b></a>
+            <a href="{% url 'detail' post_id=post.id %}" class="btn btn-info"><b>{{ post.title }}<br></b></a>
         {% endfor %}
+    <a href="{% url 'create' %}" class="btn btn-info"><b>create the new one</b></a>
     </ul>
 </html>

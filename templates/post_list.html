@@ -1,10 +1,14 @@
+
 <!DOCTYPE html>
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after">
+</head>
 <html>
-    <h1>hello</h1>
-    <ul>
+        <article class="centered">
         {% for post in posts %}
-            <a href="{% url 'detail' post_id=post.id %}" class="btn btn-info"><b>{{ post.title }}<br></b></a>
+            <a href="{% url 'detail' post_id=post.id %}" style="text-align: center;">{{ post.title }}<br></a>
         {% endfor %}
-    <a href="{% url 'create' %}" class="btn btn-info"><b>create the new one</b></a>
-    </ul>
+        <a href="{% url 'create' %}" class="btn btn-info"><b>create</b></a>
+        </article>
 </html>

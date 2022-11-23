@@ -18,6 +18,7 @@ def create(request):
         content = request.POST.get('content')
         post=Post.objects.create(title=title)
         PostDetail.objects.create(post=post, context=content)
+
     return render(request, './create_new.html')
 
 

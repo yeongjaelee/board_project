@@ -2,13 +2,26 @@
 <!DOCTYPE html>
 {% load static %}
 <head>
-    <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after">
+    <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after1">
 </head>
 <html>
-        <article class="centered">
-        {% for post in posts %}
-            <a href="{% url 'detail' post_id=post.id %}" style="text-align: center;">{{ post.title }}<br></a>
+        {% for post in page_obj %}
+            <a href="{% url 'detail' post_id=post.id %}"><p>{{ post.title }}</p></a>
         {% endfor %}
-        <a href="{% url 'create' %}" class="btn btn-info"><b>create</b></a>
-        </article>
+        <div id="paging">
+        <ul class="pagination justify-content-center" style="margin-top: 2rem;">
+            <!-- 페이지리스트 -->
+            {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number == page_obj.number %}
+                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+            {% else %}
+                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        </div>
+        <div>
+            <a href="{% url 'create' %}" class="btn btn-info"><b><br>create</b></a>
+        </div>
+
 </html>

@@ -1,4 +1,5 @@
 # Create your views here.
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 
 from board.models import PostDetail
@@ -8,8 +9,10 @@ from board.models.post import Post
 def index(request):
     posts = Post.objects.all()
     post_all = {"posts": posts}
-
-    return render(request, './post_list.html', post_all)
+    page = request.GET.get('page', '1')
+    paginator = Paginator(posts, '5')
+    page_obj = paginator.page(page)
+    return render(request, './post_list.html', {'page_obj': page_obj})
 
 
 def create(request):

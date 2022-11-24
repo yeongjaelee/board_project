@@ -5,11 +5,14 @@
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after1">
 </head>
 <html>
+
+        <h1 style="text-align: center; height: 100px; bottom:0" >Here is board main page </h1>
+        <div st></div>
         {% for post in page_obj %}
-            <a href="{% url 'detail' post_id=post.id %}"><p>{{ post.title }}</p></a>
+            <a href="{% url 'detail' post_id=post.id %}"><div class="centered_2">{{ post.title }}</div></a>
         {% endfor %}
-        <div id="paging">
-        <ul class="pagination justify-content-center" style="margin-top: 2rem;">
+        <div class="centered">
+            <ul class="pagination justify-content-center">
             <!-- 페이지리스트 -->
             {% for page_number in page_obj.paginator.page_range %}
             {% if page_number == page_obj.number %}
@@ -18,10 +21,8 @@
                 <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
             {% endif %}
             {% endfor %}
-        </ul>
-        </div>
-        <div>
-            <a href="{% url 'create' %}" class="btn btn-info"><b><br>create</b></a>
+            </ul>
+            <a href="{% url 'create' %}" ><b><br><br><br>create</b></a>
         </div>
 
 </html>

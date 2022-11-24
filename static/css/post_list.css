@@ -3,5 +3,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+}
+.centered_1 {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+
+}
+.centered_2 {
+    text-align: center;
+    font-size: larger;
+    border-color: #747474;
+    padding: 10px;
+    box-sizing: border-box;
 }

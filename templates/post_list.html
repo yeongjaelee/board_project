@@ -12,7 +12,7 @@
         {% endfor %}
         <div class="centered">
             <ul class="pagination justify-content-center">
-            <!-- 페이지리스트 -->
+            <!-- page list -->
             {% for page_number in page_obj.paginator.page_range %}
             {% if page_number == page_obj.number %}
                 <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>

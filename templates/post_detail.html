@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <ul>
-        {% for detail in post_detail %}
-            <b>{{ detail.context }} <br></b>
+    <ul style="text-align: center">
+    <h1> here is the post_detail area</h1>
+        <div>
+        <textarea rows="20" cols="100">{{ post_detail.context }}</textarea>
+        </div>
+    <h2> here is the comment area in post_detail</h2>
+        {% for comment in page_comment %}
+            <div>
+            <textarea rows="1" cols="100">{{ comment.comment }}</textarea>
+            </div>
         {% endfor %}
+        <!-- 페이지리스트 -->
+            {% for page_number in page_comment.paginator.page_range %}
+            {% if page_number == page_obj.number %}
+                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+            {% else %}
+                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+            {% endif %}
+            {% endfor %}
+        <form method="post">
+            {% csrf_token %}
+        <div class="form-group">
+            <textarea class="form-control" id="id_comment" name="comment" rows="1" cols="100"></textarea>
+        </div>
+            <button type="submit" class="btn btn-success">add comment</button>
+        </form>
     <a href="{% url 'index' %}">home</a>
     </ul>
 </html>

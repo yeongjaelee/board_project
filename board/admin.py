@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from board.models import PostDetail
+from board.models import PostDetail, Comment
 from board.models.post import Post
 
 
@@ -10,4 +10,8 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(PostDetail)
 class PostDetail(admin.ModelAdmin):
+    pass
+
+@admin.register(Comment)
+class Comment(admin.ModelAdmin):
     pass

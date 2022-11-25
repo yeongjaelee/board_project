@@ -12,13 +12,17 @@
             </div>
         {% endfor %}
         <!-- 페이지리스트 -->
-            {% for page_number in page_comment.paginator.page_range %}
-            {% if page_number == page_obj.number %}
-                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
-            {% else %}
-                <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
-            {% endif %}
-            {% endfor %}
+    {% if comment_count == 0 %}
+
+    {% else %}
+        {% for page_number in page_comment.paginator.page_range %}
+        {% if page_number == page_obj.number %}
+            <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+        {% else %}
+            <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
         <form method="post">
             {% csrf_token %}
         <div class="form-group">

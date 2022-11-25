@@ -33,9 +33,12 @@ def detail(request, post_id):
     if not comment == "":
         Comment.objects.create(post_detail=post_detail, comment=comment)
     comments = Comment.objects.filter(post_detail=post_detail)
+    comment_count = comments.count()
     page = request.GET.get('page', '1')
     paginator = Paginator(comments, '3')
     page_comment = paginator.page(page)
-    return render(request, './post_detail.html', {'post_detail': post_detail, 'page_comment': page_comment})
+    return render(request, './post_detail.html', {'post_detail': post_detail,
+                                                  'page_comment': page_comment,
+                                                  'comment_count': comment_count})
 
 

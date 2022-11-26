@@ -4,11 +4,12 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after1">
 </head>
-<html>
         <h1 style="text-align: center; height: 100px; bottom:0" >Here is board main page </h1>
-        <div></div>
-        {% for post in page_obj %}
-            <a href="{% url 'detail' post_id=post.id %}"><div class="centered_2">{{ post.title }}</div></a>
+        {% for post in page_obj %}<div class="centered_2">
+            <a href="{% url 'detail' post_id=post.id %}">
+                {{ post.title }}</a>
+            <button>delete</button>
+            </div>
         {% endfor %}
         <div class="centered">
             <ul class="pagination justify-content-center">

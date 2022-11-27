@@ -5,13 +5,17 @@
     <link rel="stylesheet" href="{% static 'css/post_list.css' %}?after1">
 </head>
         <h1 style="text-align: center; height: 100px; bottom:0" >Here is board main page </h1>
-        {% for post in page_obj %}<div class="centered_2">
-            <a href="{% url 'detail' post_id=post.id %}">
-                {{ post.title }}</a>
-            <a href="{% url 'delete' delete_post_id=post.id %}">
-            <input type="button" class="btndelete" value="delete" id="id_delete" name="delete_post_id">
-            </a>
-            </div>
+        {% for post in page_obj %}
+        <table border="1" style="margin-left: auto; margin-right: auto; width: 1000px; height: 80px">
+        <tr>
+            <td width="40" style="text-align: center">1</td>
+            <td width="800" style="text-align: center"><a href="{% url 'detail' post_id=post.id %}">
+                {{ post.title }}</a></td>
+            <td width="100" style="text-align: center"><a href="{% url 'delete' delete_post_id=post.id %}">
+            <input type="button" class="btndelete" value="delete" id="id_delete" name="delete_post_id" style="height: 80px; width: 100px">
+            </a></td>
+        </tr>
+        </table>
         {% endfor %}
         <div class="centered">
             <ul class="pagination justify-content-center">

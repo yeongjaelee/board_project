@@ -6,7 +6,12 @@ from board.models import PostDetail, Comment
 from board.models.post import Post
 
 
-def index(request):
+def index(request, **kwargs):
+    #delete post
+    delete_post_id = kwargs.get('delete_post_id')
+    if delete_post_id:
+        delete_post = Post.objects.get(pk=delete_post_id)
+        delete_post.delete()
     posts = Post.objects.all()
     page = request.GET.get('page', '1')
     paginator = Paginator(posts, '5')
@@ -40,5 +45,12 @@ def detail(request, post_id):
     return render(request, './post_detail.html', {'post_detail': post_detail,
                                                   'page_comment': page_comment,
                                                   'comment_count': comment_count})
+
+
+def delete(request, delete_post_id):
+    if delete_post_id:
+        print('there is id')
+    else:
+        print('there is not id')
 
 

@@ -8,7 +8,9 @@
         {% for post in page_obj %}<div class="centered_2">
             <a href="{% url 'detail' post_id=post.id %}">
                 {{ post.title }}</a>
-            <button>delete</button>
+            <a href="{% url 'delete' delete_post_id=post.id %}">
+            <input type="button" class="btndelete" value="delete" id="id_delete" name="delete_post_id">
+            </a>
             </div>
         {% endfor %}
         <div class="centered">

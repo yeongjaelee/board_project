@@ -44,13 +44,30 @@ def detail(request, post_id):
     page_comment = paginator.page(page)
     return render(request, './post_detail.html', {'post_detail': post_detail,
                                                   'page_comment': page_comment,
-                                                  'comment_count': comment_count})
+                                                  'comment_count': comment_count,
+                                                  'post': post})
 
 
-def delete(request, delete_post_id):
-    if delete_post_id:
-        print('there is id')
-    else:
-        print('there is not id')
+def update(request, **kwargs):
+    print(1)
+    post_detail_id = kwargs.get('post_detail_id')
+    post_id = kwargs.get('post_id')
+    print(post_id)
+    print(post_detail_id)
+    post = Post.objects.get(pk=post_id)
+    print(post)
+    post_detail = PostDetail.objects.get(pk=post_detail_id)
+    print(post_detail)
+    if request.method == "POST":
+        print(000)
+        title = request.POST.get('post_title')
+        content = request.POST.get('post_detail_content')
+        post.title = title
+        post.save()
+        post_detail.context = content
+        post_detail.save()
+        print(111)
+    print(222)
+    return render(request, 'post_detail.html')
 
 

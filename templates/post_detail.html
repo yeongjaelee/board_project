@@ -2,9 +2,28 @@
 <html>
     <ul style="text-align: center">
     <h1> here is the post_detail area</h1>
-        <div>
-        <textarea rows="20" cols="100">{{ post_detail.context }}</textarea>
+    <form method="post">
+        {% csrf_token %}
+    <div style="height: 80px">
+        <div style="font-size: x-large">
+            title
         </div>
+        <div>
+        <textarea rows="1" cols="100" style="text-align: center" name="post_title">{{ post.title }}</textarea>
+        </div>
+    </div>
+    <div>
+        <div style="text-align: center; font-size: x-large">
+            content
+        </div>
+        <div>
+        <textarea rows="15" cols="100" style="text-align: center" name="post_detail_content">{{ post_detail.context }}</textarea>
+        </div>
+        <a href ="{% url 'update' post_detail_id=post_detail.id post_id=post.id %}">
+        <input type="button" class="btndelete" value="save" style="height: 20px; width: 50px">
+        </a>
+    </div>
+    </form>
     <h2> here is the comment area in post_detail</h2>
         {% for comment in page_comment %}
             <div>
@@ -13,7 +32,6 @@
         {% endfor %}
         <!-- page list -->
     {% if comment_count == 0 %}
-
     {% else %}
         {% for page_number in page_comment.paginator.page_range %}
         {% if page_number == page_obj.number %}

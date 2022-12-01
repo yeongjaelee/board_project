@@ -34,6 +34,12 @@ def detail(request, post_id):
     comment = ""
     if request.method == "POST":
         comment = request.POST.get('comment')
+        title = request.POST.get('post_title')
+        content = request.POST.get('post_detail_content')
+        post.title = title
+        post.save()
+        post_detail.context = content
+        post_detail.save()
     comment = comment
     if not comment == "":
         Comment.objects.create(post_detail=post_detail, comment=comment)
@@ -42,6 +48,7 @@ def detail(request, post_id):
     page = request.GET.get('page', '1')
     paginator = Paginator(comments, '3')
     page_comment = paginator.page(page)
+
     return render(request, './post_detail.html', {'post_detail': post_detail,
                                                   'page_comment': page_comment,
                                                   'comment_count': comment_count,
@@ -50,24 +57,17 @@ def detail(request, post_id):
 
 def update(request, **kwargs):
     print(1)
-    post_detail_id = kwargs.get('post_detail_id')
-    post_id = kwargs.get('post_id')
     print(post_id)
-    print(post_detail_id)
     post = Post.objects.get(pk=post_id)
     print(post)
-    post_detail = PostDetail.objects.get(pk=post_detail_id)
-    print(post_detail)
     if request.method == "POST":
         print(000)
         title = request.POST.get('post_title')
         content = request.POST.get('post_detail_content')
         post.title = title
         post.save()
-        post_detail.context = content
-        post_detail.save()
         print(111)
     print(222)
-    return render(request, 'post_detail.html')
+    return render(request, 'post_list.html')
 
 
